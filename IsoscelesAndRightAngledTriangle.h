@@ -8,7 +8,6 @@
 #include "enums.h"
 #include "common_function.h"
 
-
 class IsoscelesAndRightAngledTriangle : public AbstractTriangle
 {
 public:

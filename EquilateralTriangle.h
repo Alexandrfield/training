@@ -8,11 +8,9 @@
 #include "enums.h"
 #include "common_function.h"
 
-
-
 class EquilateralTriangle : public AbstractTriangle
 {
-    public:
+public:
     
     EquilateralTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
 

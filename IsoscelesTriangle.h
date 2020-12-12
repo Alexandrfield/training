@@ -10,12 +10,11 @@
 
 class IsoscelesTriangle : public AbstractTriangle
 {
-    public:
+public:
 
     IsoscelesTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
 
     virtual TriangleTipe GetType();
-
 };
 
  

@@ -3,7 +3,6 @@
 
 #include "stdfx.h"
 
-
 class Point2D
 {
     double xCoordinate_;
@@ -20,11 +19,6 @@ public:
 
     double SquareOfDistanceToPoint(const Point2D &point) const;
     double DistanceToPoint(const Point2D &point) const;
-
-
 };
-
-
- 
 
 #endif  // POINT2D_H_ 

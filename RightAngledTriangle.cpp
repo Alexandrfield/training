@@ -1,6 +1,7 @@
 #include "RightAngledTriangle.h"
 
-RightAngledTriangle::RightAngledTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC): AbstractTriangle(vertexA, vertexB, vertexC)
+RightAngledTriangle::RightAngledTriangle(const Point2D& vertexA, const Point2D& vertexB, const Point2D& vertexC): 
+    AbstractTriangle(vertexA, vertexB, vertexC)
 {
     double SquareLengthAB = GetLengthSquareAB();
     double SquareLengthBC = GetLengthSquareBC();
@@ -13,11 +14,9 @@ RightAngledTriangle::RightAngledTriangle(const Point2D &vertexA, const Point2D &
 
         throw ObjectIsCanNotCreated();
     }
-
 }
 
 TriangleTipe RightAngledTriangle::GetType()
 {
-
     return TriangleTipe::TRINAGLE_TIPE_RIGHT_ANGLED;
 }

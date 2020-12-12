@@ -8,15 +8,13 @@
 #include "enums.h"
 #include "common_function.h"
 
-
 class RightAngledTriangle : public AbstractTriangle
 {
-    public:
+public:
 
     RightAngledTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
 
     virtual TriangleTipe GetType();
-
 };
  
 

@@ -26,8 +26,6 @@ class AbstractTriangle
     double GetLengthAC() const;
 
     virtual TriangleTipe GetType() = 0;
-
-
 };
 
 

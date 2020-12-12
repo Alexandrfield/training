@@ -13,13 +13,11 @@
 #include "ArbitraryTriangle.h"
 #include "enums.h"
 
- 
 class TriangleBilder
 {
 public:
 
     std::unique_ptr<AbstractTriangle> BildTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
-
 };
 
 #endif  // BILDER_TRIANGLE_H_ 

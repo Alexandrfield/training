@@ -3,7 +3,6 @@
 IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC): 
     AbstractTriangle(vertexA, vertexB, vertexC) 
 {
-
     double SquareLengthAB = GetLengthSquareAB();
     double SquareLengthBC = GetLengthSquareBC();
     double SquareLengthAC = GetLengthSquareAC();
@@ -27,6 +26,5 @@ IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const Point2D &
 
 TriangleTipe IsoscelesAndRightAngledTriangle::GetType()
 {
-
     return TriangleTipe::TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED;
 }

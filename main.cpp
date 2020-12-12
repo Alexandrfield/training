@@ -3,6 +3,7 @@
 #include "AbstractTriangle.h"
 #include "Point2D.h"
 #include "TriangleBilder.h"
+#include "common_function.h"
 
 
 int main(){
@@ -13,29 +14,34 @@ int main(){
     int vertexBX = 0, vertexBY = 0;
     int vertexCX = 0, vertexCY = 0;
 
-    std::cout << " enter count experiment" << std::endl;
-    std::cin >> counter_experiment;
+    print(" enter count experiment" );
+   
+
+    counter_experiment = getInput();
 
     TriangleBilder bilderObjectTriangle;
 
     for(int index = 0; index < counter_experiment; index++){
 
-        std::cout << " vertex A: " << std::endl;
-        std::cin >> vertexAX >> vertexAY;
+        print(" vertex A: ");
+        vertexAX = getInput();
+        vertexAY = getInput();
         //Point2D vertexA(vertexAX, vertexAY);
         std::unique_ptr<Point2D> vertexA;
         vertexA = std::make_unique<Point2D>(vertexAX, vertexAY);
         //Point2D* vertexA = new Point2D(vertexAX, vertexAY);
 
-        std::cout << std::endl << " vertex B: " << std::endl;
-        std::cin >> vertexBX >> vertexBY;
+        print(" vertex B: " );
+        vertexBX = getInput();
+        vertexBY = getInput();
         //Point2D vertexB(vertexBX, vertexBY);
         std::unique_ptr<Point2D> vertexB;
         vertexA = std::make_unique<Point2D>(vertexBX, vertexBY);
  //Point2D* vertexB = new Point2D(vertexBX, vertexBY);
 
-        std::cout << std::endl << " vertex C: " << std::endl;
-        std::cin >> vertexCX >> vertexCY;
+        print(" vertex C: " );
+        vertexCX = getInput();
+        vertexCY = getInput();
         //Point2D vertexC(vertexCX, vertexCY);
         std::unique_ptr<Point2D> vertexC;
         vertexA = std::make_unique<Point2D>(vertexCX, vertexCY);
@@ -54,39 +60,36 @@ int main(){
 
               switch (typeTrianfle){
 	             case TRINAGLE_TIPE_EQUILATERAL:
-		                std::cout << "TRINAGLE_TIPE_EQUILATERAL "<<std::endl;
+                        print("TRINAGLE_TIPE_EQUILATERAL ");
 		                break;
 	             case TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED:
-	                	std::cout << "TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED"<<std::endl;
+                        print("TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED");
 		                break;
               case TRINAGLE_TIPE_ISOSCELES:
-	                	std::cout << "TRINAGLE_TIPE_ISOSCELES"<<std::endl;
+                        print("TRINAGLE_TIPE_ISOSCELES");
 		                break;
 	            case TRINAGLE_TIPE_RIGHT_ANGLED:
-		                std::cout << "TRINAGLE_TIPE_RIGHT_ANGLED"<<std::endl;
+                        print("TRINAGLE_TIPE_RIGHT_ANGLED");
 		                break;
 	            case TRINAGLE_TIPE_ARBITRARY:
-		               std::cout << "TRINAGLE_TIPE_ARBITRARY"<<std::endl;
+                       print("TRINAGLE_TIPE_ARBITRARY");
 		               break;
 	            default:
-		               std::cout << "Unknown type"<<std::endl;
+                       print("Unknown type");
 	              	 break;
 	            }
 
           } else {
-
-              std::cout << "ERROR! triangle is can't created" << std::endl;
+              print("ERROR! triangle is can't created");
           }
 
         }
         catch(std::exception &exept){
-
-        std::cout << "EXEPTION: "<<exept.what()<< std::endl;
+            print("EXEPTION: " + std::string(exept.what()));
         }
     }
 
-
-    std::cout << " end" << std::endl;
+    print("end");
     getchar();
 
     return 0;
