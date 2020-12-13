@@ -12,10 +12,11 @@ class RightAngledTriangle : public AbstractTriangle
 {
 public:
 
-    RightAngledTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
+    RightAngledTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+        const std::shared_ptr<Point2D>& vertexC);
 
     virtual TriangleTipe GetType();
 };
- 
+
 
 #endif  // RIGHT_ANGLED_TRIANGLE_H_ 

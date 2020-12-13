@@ -15,17 +15,17 @@ double Point2D::GetY() const
     return yCoordinate_;
 }
 
-double Point2D::SquareOfDistanceToPoint(const Point2D& point) const
+double Point2D::SquareOfDistanceToPoint(const std::shared_ptr <Point2D>& point) const
 {
-    double lengthX = xCoordinate_ - point.GetX();
-    double lengthY = yCoordinate_ - point.GetY();
+    double lengthX = xCoordinate_ - point->GetX();
+    double lengthY = yCoordinate_ - point->GetY();
 
     double squareLength = (lengthX * lengthX) + (lengthY * lengthY);
 
     return squareLength;
 }
 
-double Point2D::DistanceToPoint(const Point2D& point) const
+double Point2D::DistanceToPoint(const std::shared_ptr <Point2D>& point) const
 {
     double squareLength = SquareOfDistanceToPoint(point);
 

@@ -7,11 +7,12 @@
 
 class AbstractTriangle
 {
-    std::vector<Point2D> triangleABC;
+    std::vector< std::shared_ptr<Point2D> > triangleABC;
 
-    public:
+public:
 
-    AbstractTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
+    AbstractTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+        const std::shared_ptr<Point2D>& vertexC);
 
     double GetLengthSquareAB() const;
 
@@ -27,9 +28,6 @@ class AbstractTriangle
 
     virtual TriangleTipe GetType() = 0;
 };
-
-
- 
 
 #endif  // TRIAGLE_H_ 
 

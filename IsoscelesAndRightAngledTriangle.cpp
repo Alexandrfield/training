@@ -1,7 +1,7 @@
 #include "IsoscelesAndRightAngledTriangle.h"
 
-IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC): 
-    AbstractTriangle(vertexA, vertexB, vertexC) 
+IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const std::shared_ptr<Point2D>& vertexA, 
+    const std::shared_ptr<Point2D>& vertexB, const std::shared_ptr<Point2D>&  vertexC): AbstractTriangle(vertexA, vertexB, vertexC) 
 {
     double SquareLengthAB = GetLengthSquareAB();
     double SquareLengthBC = GetLengthSquareBC();

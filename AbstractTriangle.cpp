@@ -1,12 +1,13 @@
 #include "AbstractTriangle.h"
 #include "ObjectIsCanNotCreated.h"
 
-AbstractTriangle::AbstractTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC)
+AbstractTriangle::AbstractTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+    const std::shared_ptr<Point2D>& vertexC)
 {
      
-    double lengthAB = vertexA.DistanceToPoint(vertexB);
-    double lengthBC = vertexB.DistanceToPoint(vertexC);
-    double lengthAC = vertexA.DistanceToPoint(vertexC);
+    double lengthAB = vertexA->DistanceToPoint(vertexB);
+    double lengthBC = vertexB->DistanceToPoint(vertexC);
+    double lengthAC = vertexA->DistanceToPoint(vertexC);
 
     if( (lengthAB + lengthBC <= lengthAC) ||
         (lengthAC + lengthBC <= lengthAB) ||
@@ -25,32 +26,32 @@ AbstractTriangle::AbstractTriangle(const Point2D &vertexA, const Point2D &vertex
 
 double AbstractTriangle::GetLengthSquareAB() const 
 {
-    return triangleABC[0].SquareOfDistanceToPoint(triangleABC[1]);
+    return triangleABC[0]->SquareOfDistanceToPoint(triangleABC[1]);
 }
 
 double AbstractTriangle::GetLengthSquareBC() const 
 {
-    return triangleABC[1].SquareOfDistanceToPoint(triangleABC[2]);
+    return triangleABC[1]->SquareOfDistanceToPoint(triangleABC[2]);
 }
  
 double AbstractTriangle::GetLengthSquareAC() const 
 {
-    return triangleABC[0].SquareOfDistanceToPoint(triangleABC[2]);
+    return triangleABC[0]->SquareOfDistanceToPoint(triangleABC[2]);
 }
 
 double AbstractTriangle::GetLengthAB() const 
 {
-    return triangleABC[0].DistanceToPoint(triangleABC[1]);
+    return triangleABC[0]->DistanceToPoint(triangleABC[1]);
 }
 
 double AbstractTriangle::GetLengthBC() const 
 {
-    return triangleABC[1].DistanceToPoint(triangleABC[2]);
+    return triangleABC[1]->DistanceToPoint(triangleABC[2]);
 }
     
 double AbstractTriangle::GetLengthAC() const 
 {
-    return triangleABC[0].DistanceToPoint(triangleABC[2]);
+    return triangleABC[0]->DistanceToPoint(triangleABC[2]);
 }
 
    

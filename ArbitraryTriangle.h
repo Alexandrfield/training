@@ -11,7 +11,8 @@ class ArbitraryTriangle : public AbstractTriangle
 {
 public:
 
-    ArbitraryTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
+    ArbitraryTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+        const std::shared_ptr<Point2D>& vertexC);
 
     TriangleTipe GetType();
 };

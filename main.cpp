@@ -2,7 +2,7 @@
 #include "stdfx.h"
 #include "AbstractTriangle.h"
 #include "Point2D.h"
-#include "TriangleBilder.h"
+#include "TriangleBuilder.h"
 #include "common_function.h"
 
 
@@ -16,10 +16,9 @@ int main(){
 
     print(" enter count experiment" );
    
-
     counter_experiment = getInput();
 
-    TriangleBilder bilderObjectTriangle;
+    TriangleBuilder bilderObjectTriangle;
 
     for(int index = 0; index < counter_experiment; index++){
 
@@ -27,31 +26,31 @@ int main(){
         vertexAX = getInput();
         vertexAY = getInput();
         //Point2D vertexA(vertexAX, vertexAY);
-        std::unique_ptr<Point2D> vertexA;
-        vertexA = std::make_unique<Point2D>(vertexAX, vertexAY);
+        std::shared_ptr<Point2D> vertexA;
+        vertexA = std::make_shared<Point2D>(vertexAX, vertexAY);
         //Point2D* vertexA = new Point2D(vertexAX, vertexAY);
 
         print(" vertex B: " );
         vertexBX = getInput();
         vertexBY = getInput();
         //Point2D vertexB(vertexBX, vertexBY);
-        std::unique_ptr<Point2D> vertexB;
-        vertexA = std::make_unique<Point2D>(vertexBX, vertexBY);
+        std::shared_ptr<Point2D> vertexB;
+        vertexB = std::make_shared<Point2D>(vertexBX, vertexBY);
  //Point2D* vertexB = new Point2D(vertexBX, vertexBY);
 
         print(" vertex C: " );
         vertexCX = getInput();
         vertexCY = getInput();
         //Point2D vertexC(vertexCX, vertexCY);
-        std::unique_ptr<Point2D> vertexC;
-        vertexA = std::make_unique<Point2D>(vertexCX, vertexCY);
+        std::shared_ptr<Point2D> vertexC;
+        vertexC = std::make_shared<Point2D>(vertexCX, vertexCY);
  //Point2D* vertexC = new Point2D(vertexCX, vertexCY);
  //       std::cout << std::endl;
 
        try{
 
           //std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.BildTriangle(*vertexA, *vertexB, *vertexC);
-          std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.BildTriangle(*vertexA.get(), *vertexB.get(), *vertexC.get());
+          std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.buildTriangle(vertexA, vertexB, vertexC);
           //std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.BildTriangle(vertexA, vertexB, vertexC);
 
           if( pointerToTriagle ) {

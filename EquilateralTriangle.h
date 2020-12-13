@@ -11,12 +11,12 @@
 class EquilateralTriangle : public AbstractTriangle
 {
 public:
-    
-    EquilateralTriangle(const Point2D &vertexA, const Point2D &vertexB, const Point2D &vertexC);
+
+    EquilateralTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+        const std::shared_ptr<Point2D>& vertexC);
 
     virtual TriangleTipe GetType();
 };
 
- 
 
 #endif  // EQUILATERAL_TRIANGLE_H_ 
