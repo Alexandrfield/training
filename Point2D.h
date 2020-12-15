@@ -17,8 +17,11 @@ public:
     double GetX() const;
     double GetY() const;
 
-    double SquareOfDistanceToPoint(const std::shared_ptr <Point2D>& point) const;
-    double DistanceToPoint(const std::shared_ptr <Point2D>& point) const;
+ //   double SquareOfDistanceToPoint(const std::unique_ptr <Point2D>& point) const;
+ //   double DistanceToPoint(const std::unique_ptr <Point2D>& point) const;
+
+    double SquareOfDistanceToPoint(const Point2D& point) const;
+    double DistanceToPoint(const Point2D& point) const;
 };
 
 #endif  // POINT2D_H_ 

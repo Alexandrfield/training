@@ -15,7 +15,7 @@ public:
     IsoscelesAndRightAngledTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
         const std::shared_ptr<Point2D>& vertexC);
 
-    virtual TriangleTipe GetType();
+    virtual TriangleType GetType();
 };
 
 #endif  // ISOSCELES_RIGHT_ANGLED_TRIANGLE_H_ 

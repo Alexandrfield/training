@@ -16,7 +16,7 @@ RightAngledTriangle::RightAngledTriangle(const std::shared_ptr<Point2D>& vertexA
     }
 }
 
-TriangleTipe RightAngledTriangle::GetType()
+TriangleType RightAngledTriangle::GetType()
 {
-    return TriangleTipe::TRINAGLE_TIPE_RIGHT_ANGLED;
+    return TriangleType::TRINAGLE_TYPE_RIGHT_ANGLED;
 }

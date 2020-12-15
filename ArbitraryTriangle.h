@@ -14,7 +14,7 @@ public:
     ArbitraryTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
         const std::shared_ptr<Point2D>& vertexC);
 
-    TriangleTipe GetType();
+    TriangleType GetType();
 };
  
 

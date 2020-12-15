@@ -7,7 +7,7 @@
 
 class AbstractTriangle
 {
-    std::vector< std::shared_ptr<Point2D> > triangleABC;
+    std::vector< std::unique_ptr<Point2D> > triangleABC;
 
 public:
 
@@ -26,7 +26,8 @@ public:
     
     double GetLengthAC() const;
 
-    virtual TriangleTipe GetType() = 0;
+    virtual TriangleType GetType() = 0;
+
 };
 
 #endif  // TRIAGLE_H_ 
