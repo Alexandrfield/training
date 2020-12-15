@@ -24,7 +24,7 @@ IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const std::shar
     }
 }
 
-TriangleTipe IsoscelesAndRightAngledTriangle::GetType()
+TriangleType IsoscelesAndRightAngledTriangle::GetType()
 {
-    return TriangleTipe::TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED;
+    return TriangleType::TRINAGLE_TYPE_ISOSCELES_RIGHT_ANGLED;
 }

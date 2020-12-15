@@ -16,7 +16,7 @@
     }
 }
 
-TriangleTipe IsoscelesTriangle::GetType()
+ TriangleType IsoscelesTriangle::GetType()
 {
-    return TriangleTipe::TRINAGLE_TIPE_ISOSCELES;
+    return TriangleType::TRINAGLE_TYPE_ISOSCELES;
 }

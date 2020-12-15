@@ -25,52 +25,44 @@ int main(){
         print(" vertex A: ");
         vertexAX = getInput();
         vertexAY = getInput();
-        //Point2D vertexA(vertexAX, vertexAY);
         std::shared_ptr<Point2D> vertexA;
         vertexA = std::make_shared<Point2D>(vertexAX, vertexAY);
-        //Point2D* vertexA = new Point2D(vertexAX, vertexAY);
+        
 
         print(" vertex B: " );
         vertexBX = getInput();
         vertexBY = getInput();
-        //Point2D vertexB(vertexBX, vertexBY);
         std::shared_ptr<Point2D> vertexB;
         vertexB = std::make_shared<Point2D>(vertexBX, vertexBY);
- //Point2D* vertexB = new Point2D(vertexBX, vertexBY);
 
         print(" vertex C: " );
         vertexCX = getInput();
         vertexCY = getInput();
-        //Point2D vertexC(vertexCX, vertexCY);
         std::shared_ptr<Point2D> vertexC;
         vertexC = std::make_shared<Point2D>(vertexCX, vertexCY);
- //Point2D* vertexC = new Point2D(vertexCX, vertexCY);
- //       std::cout << std::endl;
 
        try{
 
-          //std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.BildTriangle(*vertexA, *vertexB, *vertexC);
           std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.buildTriangle(vertexA, vertexB, vertexC);
-          //std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.BildTriangle(vertexA, vertexB, vertexC);
 
           if( pointerToTriagle ) {
 
-              TriangleTipe typeTrianfle = pointerToTriagle->GetType();
+              TriangleType typeTrianfle = pointerToTriagle->GetType();
 
               switch (typeTrianfle){
-	             case TRINAGLE_TIPE_EQUILATERAL:
+	             case TRINAGLE_TYPE_EQUILATERAL:
                         print("TRINAGLE_TIPE_EQUILATERAL ");
 		                break;
-	             case TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED:
+	             case TRINAGLE_TYPE_ISOSCELES_RIGHT_ANGLED:
                         print("TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED");
 		                break;
-              case TRINAGLE_TIPE_ISOSCELES:
+              case TRINAGLE_TYPE_ISOSCELES:
                         print("TRINAGLE_TIPE_ISOSCELES");
 		                break;
-	            case TRINAGLE_TIPE_RIGHT_ANGLED:
+	            case TRINAGLE_TYPE_RIGHT_ANGLED:
                         print("TRINAGLE_TIPE_RIGHT_ANGLED");
 		                break;
-	            case TRINAGLE_TIPE_ARBITRARY:
+	            case TRINAGLE_TYPE_ARBITRARY:
                        print("TRINAGLE_TIPE_ARBITRARY");
 		               break;
 	            default:

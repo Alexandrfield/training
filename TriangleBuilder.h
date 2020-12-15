@@ -15,11 +15,7 @@
 
 class TriangleBuilder
 {
-    std::shared_ptr<AbstractTriangleBuilder> equilateralTriangleBuilder_;
-    std::shared_ptr<AbstractTriangleBuilder> isoscelesAndRightAngledTriangleBuilder_;
-    std::shared_ptr<AbstractTriangleBuilder> isoscelesTriangleBuilder_;
-    std::shared_ptr<AbstractTriangleBuilder> rightAngledTriangleBuilder_;
-    std::shared_ptr<AbstractTriangleBuilder> arbitraryTriangleBuilder_;
+    std::unique_ptr<AbstractTriangleBuilder> head;
 
 public:
 

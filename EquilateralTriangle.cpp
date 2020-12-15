@@ -16,8 +16,7 @@ EquilateralTriangle::EquilateralTriangle(const std::shared_ptr<Point2D>& vertexA
     }
 }
 
-TriangleTipe EquilateralTriangle::GetType()
+TriangleType EquilateralTriangle::GetType()
 {
-
-    return TriangleTipe::TRINAGLE_TIPE_EQUILATERAL;
+    return TriangleType::TRINAGLE_TYPE_EQUILATERAL;
 }
