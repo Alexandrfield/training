@@ -4,27 +4,19 @@
 #include "stdfx.h"
 #include "Point2D.h"
 #include "enums.h"
+#include "ParametersTriangle.h"
 
 class AbstractTriangle
 {
-    std::vector< std::unique_ptr<Point2D> > triangleABC;
+    std::shared_ptr<ParametersTriangle> triangle_;
 
 public:
 
-    AbstractTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
-        const std::shared_ptr<Point2D>& vertexC);
+    AbstractTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
 
-    double GetLengthSquareAB() const;
+    std::unique_ptr< std::vector<double> > GetSides() const;
 
-    double GetLengthSquareBC() const;
- 
-    double GetLengthSquareAC() const;
-
-    double GetLengthAB() const;
-
-    double GetLengthBC() const;
-    
-    double GetLengthAC() const;
+    std::unique_ptr<std::vector<Point2D>> GetLPoints() const;
 
     virtual TriangleType GetType() = 0;
 

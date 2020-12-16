@@ -1,18 +1,17 @@
 #include "AbstractTriangleBuilder.h"
 
-AbstractTriangleBuilder::AbstractTriangleBuilder(std::unique_ptr<AbstractTriangleBuilder>& builder) : next_builder_(std::move(builder)) {}
-AbstractTriangleBuilder::AbstractTriangleBuilder() : next_builder_(nullptr) {}
+AbstractTriangleBuilder::AbstractTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> builder) : next_builder_(builder) {}
 
-std::unique_ptr<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const std::shared_ptr <Point2D>& vertexA, 
-    const  std::shared_ptr <Point2D>& vertexB, const  std::shared_ptr <Point2D>& vertexC)
+
+std::unique_ptr<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const std::shared_ptr<ParametersTriangle>& triangle)
 {
     try {
-        return create(vertexA, vertexB, vertexC);
+        return create(triangle);
     }
     catch (const ObjectIsCanNotCreated& exception) {
 
         if (this->next_builder_) {
-            return this->next_builder_->buildTriangle(vertexA, vertexB, vertexC);
+            return this->next_builder_->buildTriangle(triangle);
         }
 
         return std::unique_ptr<AbstractTriangle>();

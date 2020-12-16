@@ -1,24 +1,22 @@
 #include "IsoscelesAndRightAngledTriangle.h"
 
-IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const std::shared_ptr<Point2D>& vertexA, 
-    const std::shared_ptr<Point2D>& vertexB, const std::shared_ptr<Point2D>&  vertexC): AbstractTriangle(vertexA, vertexB, vertexC) 
+IsoscelesAndRightAngledTriangle::IsoscelesAndRightAngledTriangle(const std::shared_ptr<ParametersTriangle>& triangle): 
+    AbstractTriangle(triangle)
 {
-    double SquareLengthAB = GetLengthSquareAB();
-    double SquareLengthBC = GetLengthSquareBC();
-    double SquareLengthAC = GetLengthSquareAC();
+    std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
         
     // test ightAngledTriangle:
-    if( !isEqual( SquareLengthAB + SquareLengthBC, SquareLengthAC ) &&  
-        !isEqual( SquareLengthAB + SquareLengthAC, SquareLengthBC ) &&  
-        !isEqual( SquareLengthAC + SquareLengthBC, SquareLengthAB ) ){
+    std::sort((*triangleSides).begin(), (*triangleSides).end());
+    if( !isEqual( (*triangleSides)[0] * (*triangleSides)[0] + (*triangleSides)[1] * (*triangleSides)[1], 
+        (*triangleSides)[2] * (*triangleSides)[2]) ){
 
         throw ObjectIsCanNotCreated();
     }
 
     // test Isosceles:
-    if( !isEqual(SquareLengthAC, SquareLengthAB) &&  
-        !isEqual(SquareLengthBC, SquareLengthAB) && 
-        !isEqual(SquareLengthBC, SquareLengthAC) ){
+    if( !isEqual((*triangleSides)[0], (*triangleSides)[1]) &&
+        !isEqual((*triangleSides)[0], (*triangleSides)[2]) &&
+        !isEqual((*triangleSides)[1], (*triangleSides)[2]) ){
 
         throw ObjectIsCanNotCreated();
     }

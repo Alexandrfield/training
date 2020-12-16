@@ -10,18 +10,16 @@
 
 class AbstractTriangleBuilder
 {
-    std::unique_ptr<AbstractTriangleBuilder> next_builder_;
+    std::shared_ptr<AbstractTriangleBuilder> next_builder_;
 
 public:
 
-    AbstractTriangleBuilder(std::unique_ptr<AbstractTriangleBuilder>& builder);
-    AbstractTriangleBuilder();
+    AbstractTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> builder);
+    //AbstractTriangleBuilder();
 
-    virtual std::unique_ptr<AbstractTriangle> create(const std::shared_ptr <Point2D>& vertexA, const  std::shared_ptr <Point2D>& vertexB,
-        const  std::shared_ptr <Point2D>& vertexC) = 0;
+    virtual std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<ParametersTriangle>& triangle) = 0;
 
-    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr <Point2D>& vertexA, const  std::shared_ptr <Point2D>& vertexB,
-        const  std::shared_ptr <Point2D>& vertexC);
+    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
 
 }; 
 #endif  // ABSTRUCT_TRIAGLE_BUILDER_H_ 

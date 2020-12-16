@@ -11,11 +11,9 @@ class RightAngledTriangleBuilder : public AbstractTriangleBuilder
 {
 public:
 
-    RightAngledTriangleBuilder(std::unique_ptr<AbstractTriangleBuilder>& nextBuilder);
-    RightAngledTriangleBuilder();
+    RightAngledTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr <Point2D>& vertexA,
-        const  std::shared_ptr <Point2D>& vertexB, const  std::shared_ptr <Point2D>& vertexC) override;
+    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<ParametersTriangle>& triangle) override;
 };
 
 #endif  // BUILDER_RIGHT_ANGLED_TRIANGLE_H_ 
