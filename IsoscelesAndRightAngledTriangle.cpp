@@ -26,3 +26,4 @@ TriangleType IsoscelesAndRightAngledTriangle::GetType()
 {
     return TriangleType::TRINAGLE_TYPE_ISOSCELES_RIGHT_ANGLED;
 }
+
