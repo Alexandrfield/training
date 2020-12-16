@@ -12,8 +12,7 @@ class IsoscelesTriangle : public AbstractTriangle
 {
 public:
 
-    IsoscelesTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
-        const std::shared_ptr<Point2D>& vertexC);
+    IsoscelesTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
 
     virtual TriangleType GetType();
 };

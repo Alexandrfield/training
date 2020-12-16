@@ -15,14 +15,14 @@
 
 class TriangleBuilder
 {
-    std::unique_ptr<AbstractTriangleBuilder> head;
+    std::shared_ptr<AbstractTriangleBuilder> head;
 
 public:
 
     TriangleBuilder();
 
-    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr <Point2D>& vertexA, const  std::shared_ptr <Point2D>& vertexB,
-        const  std::shared_ptr <Point2D>& vertexC);
+    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr <Point2D>& vertexA,
+        const  std::shared_ptr <Point2D>& vertexB, const  std::shared_ptr <Point2D>& vertexC);
 };
 
 #endif  // BILDER_TRIANGLE_H_ 

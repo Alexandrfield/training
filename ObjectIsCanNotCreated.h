@@ -11,4 +11,12 @@ public:
 };
 
 
+class TriangleIsCanNotCreated : public std::exception
+{
+public:
+
+	const char* what() const noexcept;
+};
+
+
 #endif  // EXCEPTION_OBJECTCAN_NOT_CREATED_H_ 

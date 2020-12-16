@@ -4,7 +4,7 @@
 #include "Point2D.h"
 #include "TriangleBuilder.h"
 #include "common_function.h"
-
+#include "VocabularyTriangleType.h"
 
 int main(){
 
@@ -19,6 +19,7 @@ int main(){
     counter_experiment = getInput();
 
     TriangleBuilder bilderObjectTriangle;
+    VocabularyTriangleType triangleType;
 
     for(int index = 0; index < counter_experiment; index++){
 
@@ -49,26 +50,7 @@ int main(){
 
               TriangleType typeTrianfle = pointerToTriagle->GetType();
 
-              switch (typeTrianfle){
-	             case TRINAGLE_TYPE_EQUILATERAL:
-                        print("TRINAGLE_TIPE_EQUILATERAL ");
-		                break;
-	             case TRINAGLE_TYPE_ISOSCELES_RIGHT_ANGLED:
-                        print("TRINAGLE_TIPE_ISOSCELES_RIGHT_ANGLED");
-		                break;
-              case TRINAGLE_TYPE_ISOSCELES:
-                        print("TRINAGLE_TIPE_ISOSCELES");
-		                break;
-	            case TRINAGLE_TYPE_RIGHT_ANGLED:
-                        print("TRINAGLE_TIPE_RIGHT_ANGLED");
-		                break;
-	            case TRINAGLE_TYPE_ARBITRARY:
-                       print("TRINAGLE_TIPE_ARBITRARY");
-		               break;
-	            default:
-                       print("Unknown type");
-	              	 break;
-	            }
+              print(triangleType.decode(typeTrianfle));
 
           } else {
               print("ERROR! triangle is can't created");

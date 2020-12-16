@@ -8,6 +8,7 @@
 #include <exception>
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 #endif  // STDFX_H_ 
 

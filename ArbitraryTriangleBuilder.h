@@ -12,11 +12,10 @@ class ArbitraryTriangleBuilder : public AbstractTriangleBuilder
 { 
 public:
 
-    ArbitraryTriangleBuilder();
-    ArbitraryTriangleBuilder(std::unique_ptr<AbstractTriangleBuilder>& nextBuilder);
+  //  ArbitraryTriangleBuilder();
+    ArbitraryTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr <Point2D>& vertexA,
-        const  std::shared_ptr <Point2D>& vertexB, const  std::shared_ptr <Point2D>& vertexC) override;
+    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<ParametersTriangle>& triangle) override;
 };
 
 #endif  // BUILDER_ARBITRARY_TRIANGLE_H_ 
