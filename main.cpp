@@ -19,7 +19,7 @@ int main(){
     counter_experiment = getInput();
 
     TriangleBuilder bilderObjectTriangle;
-    VocabularyTriangleType triangleType;
+
 
     for(int index = 0; index < counter_experiment; index++){
 
@@ -50,7 +50,7 @@ int main(){
 
               TriangleType typeTrianfle = pointerToTriagle->GetType();
 
-              print(triangleType.decode(typeTrianfle));
+              print(VocabularyTriangleType::enumTriangleTypeToString(typeTrianfle));
 
           } else {
               print("ERROR! triangle is can't created");

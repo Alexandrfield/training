@@ -15,7 +15,7 @@ public:
     EquilateralTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
 //    EquilateralTriangleBuilder();
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<ParametersTriangle>& triangle) override;
+    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) override;
 };
 
 #endif  // BUILDER_EQUILATERA_TRIANGLE_H_ 

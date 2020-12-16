@@ -4,7 +4,7 @@ IsoscelesAndRightAngledTriangleBuilder::IsoscelesAndRightAngledTriangleBuilder(s
     AbstractTriangleBuilder(nextBuilder) {}
 
 
-std::unique_ptr<AbstractTriangle> IsoscelesAndRightAngledTriangleBuilder::create(const std::shared_ptr<ParametersTriangle>& triangle) {
+std::unique_ptr<AbstractTriangle> IsoscelesAndRightAngledTriangleBuilder::create(const std::shared_ptr<TriangleParameters>& triangle) {
 
     return std::make_unique<IsoscelesAndRightAngledTriangle>(triangle);
 }

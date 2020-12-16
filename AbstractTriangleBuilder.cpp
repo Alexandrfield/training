@@ -3,7 +3,7 @@
 AbstractTriangleBuilder::AbstractTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> builder) : next_builder_(builder) {}
 
 
-std::unique_ptr<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const std::shared_ptr<ParametersTriangle>& triangle)
+std::unique_ptr<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const std::shared_ptr<TriangleParameters>& triangle)
 {
     try {
         return create(triangle);

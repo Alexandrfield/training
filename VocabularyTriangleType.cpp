@@ -1,6 +1,6 @@
 #include "VocabularyTriangleType.h"
 
-std::string VocabularyTriangleType::decode(TriangleType type)
+std::string VocabularyTriangleType::enumTriangleTypeToString(TriangleType type)
 {
 	switch (type) {
 	case TRINAGLE_TYPE_EQUILATERAL:

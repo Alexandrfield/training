@@ -1,6 +1,6 @@
 #include "EquilateralTriangle.h"
 
-EquilateralTriangle::EquilateralTriangle(const std::shared_ptr<ParametersTriangle>& triangle): AbstractTriangle(triangle)
+EquilateralTriangle::EquilateralTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle)
 {
     std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
 

@@ -1,7 +1,7 @@
 #include "AbstractTriangle.h"
 #include "ObjectIsCanNotCreated.h"
 
-AbstractTriangle::AbstractTriangle(const std::shared_ptr<ParametersTriangle>& triangle): triangle_(triangle) {}
+AbstractTriangle::AbstractTriangle(const std::shared_ptr<TriangleParameters>& triangle): triangle_(triangle) {}
 
 std::unique_ptr< std::vector<double> > AbstractTriangle::GetSides() const
 {

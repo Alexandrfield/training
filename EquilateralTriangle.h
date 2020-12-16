@@ -12,7 +12,7 @@ class EquilateralTriangle : public AbstractTriangle
 {
 public:
 
-    EquilateralTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
+    EquilateralTriangle(const std::shared_ptr<TriangleParameters>& triangle);
 
     virtual TriangleType GetType();
 };

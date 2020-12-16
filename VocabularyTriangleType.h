@@ -6,9 +6,10 @@
 
 class VocabularyTriangleType
 {
+    VocabularyTriangleType() {}
 public:
 
-    std::string decode(TriangleType type);
+    static std::string enumTriangleTypeToString(TriangleType type);
 };
 
 

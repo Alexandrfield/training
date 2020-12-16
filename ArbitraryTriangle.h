@@ -11,7 +11,7 @@ class ArbitraryTriangle : public AbstractTriangle
 {
 public:
 
-    ArbitraryTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
+    ArbitraryTriangle(const std::shared_ptr<TriangleParameters>& triangle);
 
     TriangleType GetType();
 };

@@ -1,6 +1,6 @@
  #include "IsoscelesTriangle.h"
 
- IsoscelesTriangle::IsoscelesTriangle(const std::shared_ptr<ParametersTriangle>& triangle): AbstractTriangle(triangle)
+ IsoscelesTriangle::IsoscelesTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle)
  {
      std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
 

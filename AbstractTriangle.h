@@ -4,15 +4,15 @@
 #include "stdfx.h"
 #include "Point2D.h"
 #include "enums.h"
-#include "ParametersTriangle.h"
+#include "TriangleParameters.h"
 
 class AbstractTriangle
 {
-    std::shared_ptr<ParametersTriangle> triangle_;
+    std::shared_ptr<TriangleParameters> triangle_;
 
 public:
 
-    AbstractTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
+    AbstractTriangle(const std::shared_ptr<TriangleParameters>& triangle);
 
     std::unique_ptr< std::vector<double> > GetSides() const;
 

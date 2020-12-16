@@ -14,7 +14,7 @@ public:
 
     IsoscelesAndRightAngledTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<ParametersTriangle>& triangle) override;
+    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) override;
 };
 
 #endif  // BUILDER_ISOSCELES_RIGHT_ANGLED_TRIANGLE_H_ 

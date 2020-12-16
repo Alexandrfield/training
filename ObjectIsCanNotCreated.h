@@ -11,7 +11,7 @@ public:
 };
 
 
-class TriangleIsCanNotCreated : public std::exception
+class ParametersAreIncorrect : public std::exception
 {
 public:
 

@@ -1,6 +1,6 @@
 #include "RightAngledTriangle.h"
 
-RightAngledTriangle::RightAngledTriangle(const std::shared_ptr<ParametersTriangle>& triangle): AbstractTriangle(triangle)
+RightAngledTriangle::RightAngledTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle)
 {
     std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
 

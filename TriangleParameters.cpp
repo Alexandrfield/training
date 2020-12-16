@@ -1,6 +1,6 @@
-#include "ParametersTriangle.h"
+#include "TriangleParameters.h"
 
-ParametersTriangle::ParametersTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+TriangleParameters::TriangleParameters(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
     const std::shared_ptr<Point2D>& vertexC)
 {
     double lengthAB = vertexA->DistanceToPoint(*vertexB);
@@ -11,7 +11,7 @@ ParametersTriangle::ParametersTriangle(const std::shared_ptr<Point2D>& vertexA, 
         (lengthAC + lengthBC <= lengthAB) ||
         (lengthAB + lengthAC <= lengthBC)) {
 
-        throw TriangleIsCanNotCreated();
+        throw ParametersAreIncorrect();
     }
 
     triangleABC.reserve(3);
@@ -25,12 +25,12 @@ ParametersTriangle::ParametersTriangle(const std::shared_ptr<Point2D>& vertexA, 
     triangleSide.push_back(lengthAC);
 }
 
-std::unique_ptr<std::vector< double >> ParametersTriangle::GetSides() const
+std::unique_ptr<std::vector< double >> TriangleParameters::GetSides() const
 {
     return std::make_unique<std::vector< double >>(triangleSide);
 }
 
-std::unique_ptr<std::vector< Point2D >> ParametersTriangle::GetPoints() const
+std::unique_ptr<std::vector< Point2D >> TriangleParameters::GetPoints() const
 {
     std::vector< Point2D > lengthSides;
     lengthSides.reserve(3);

@@ -12,7 +12,7 @@ class RightAngledTriangle : public AbstractTriangle
 {
 public:
 
-    RightAngledTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
+    RightAngledTriangle(const std::shared_ptr<TriangleParameters>& triangle);
 
     virtual TriangleType GetType();
 };

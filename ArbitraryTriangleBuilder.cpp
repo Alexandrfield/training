@@ -5,7 +5,7 @@ ArbitraryTriangleBuilder::ArbitraryTriangleBuilder(std::shared_ptr<AbstractTrian
 
 //ArbitraryTriangleBuilder::ArbitraryTriangleBuilder() :AbstractTriangleBuilder() {}
 
-std::unique_ptr<AbstractTriangle> ArbitraryTriangleBuilder::create(const std::shared_ptr<ParametersTriangle>& triangle) {
+std::unique_ptr<AbstractTriangle> ArbitraryTriangleBuilder::create(const std::shared_ptr<TriangleParameters>& triangle) {
 
     return std::make_unique<ArbitraryTriangle>(triangle);
 }

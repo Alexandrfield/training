@@ -17,9 +17,9 @@ public:
     AbstractTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> builder);
     //AbstractTriangleBuilder();
 
-    virtual std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<ParametersTriangle>& triangle) = 0;
+    virtual std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) = 0;
 
-    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr<ParametersTriangle>& triangle);
+    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr<TriangleParameters>& triangle);
 
 }; 
 #endif  // ABSTRUCT_TRIAGLE_BUILDER_H_ 

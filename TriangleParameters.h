@@ -6,7 +6,7 @@
 #include "enums.h"
 #include "ObjectIsCanNotCreated.h"
 
-class ParametersTriangle
+class TriangleParameters
 {
     // triangleABC[0] = A; triangleABC[1] = B; triangleABC[2] = C
     std::vector< std::unique_ptr<Point2D> > triangleABC;
@@ -16,7 +16,7 @@ class ParametersTriangle
 
 public:
 
-    ParametersTriangle(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
+    TriangleParameters(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
         const std::shared_ptr<Point2D>& vertexC);
 
     std::unique_ptr<std::vector< double >> GetSides() const;

@@ -7,7 +7,7 @@ const char* ObjectIsCanNotCreated::what() const noexcept
 } 
 
 
-const char* TriangleIsCanNotCreated::what() const noexcept
+const char* ParametersAreIncorrect::what() const noexcept
 {
 	return "Triangle is can't created";
 }
