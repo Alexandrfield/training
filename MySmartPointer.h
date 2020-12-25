@@ -11,17 +11,20 @@ class MySmartPointer
 
 public:
     MySmartPointer();
-    MySmartPointer(const MySmartPointer& rhs);
+    MySmartPointer(const MySmartPointer<T>& rhs);
+    MySmartPointer(std::nullptr_t rhs);
     MySmartPointer( T* rhs);
     ~MySmartPointer();
 
     T& operator *() const;
     T* operator ->() const;
-    MySmartPointer<T>& operator = (MySmartPointer& rhs);
+    MySmartPointer<T>& operator = (MySmartPointer<T>& rhs);
+    MySmartPointer<T>& operator = (std::nullptr_t rhs);
+    MySmartPointer<T>& operator = (T* rhs);
     
 
-    bool operator == (const MySmartPointer& rhs) const;
-    bool operator != (const MySmartPointer& rhs) const;
+    bool operator == (const MySmartPointer<T>& rhs) const;
+    bool operator != (const MySmartPointer<T>& rhs) const;
     operator bool() const;
 
 };
@@ -31,20 +34,25 @@ template <class T>
 MySmartPointer<T>::MySmartPointer(): pointer_(nullptr)
 {
     counterReference_ = new int;
-    *counterReference_ = 0;
+    (*counterReference_) = 1;
 }
 
 template <class T>
-MySmartPointer<T>::MySmartPointer(const MySmartPointer& rhs): pointer_(rhs.pointer_), counterReference_(rhs.counterReference_)
+MySmartPointer<T>::MySmartPointer(const MySmartPointer<T>& rhs): pointer_(rhs.pointer_), counterReference_(rhs.counterReference_)
 {
     (*counterReference_)++;
 }
 
 template <class T>
+MySmartPointer<T>::MySmartPointer(std::nullptr_t rhs) : MySmartPointer() { }
+
+template <class T>
 MySmartPointer<T>::MySmartPointer(T* rhs): pointer_(rhs)
 {
     counterReference_ = new int;
-    *counterReference_ = 1;
+    (*counterReference_) = 1;
+
+    rhs = nullptr;
 }
 
 template <class T>
@@ -52,11 +60,9 @@ void MySmartPointer<T>::eraseThisReferense()
 {
     (*counterReference_)--;
     if ((*counterReference_) == 0) {
+
         delete pointer_;
         pointer_ = nullptr;
-    }
-
-    if ((*counterReference_) < 0) {
         delete counterReference_;
         counterReference_ = nullptr;
     }
@@ -81,20 +87,14 @@ T* MySmartPointer<T>::operator ->() const
 }
 
 template <class T>
-MySmartPointer<T>& MySmartPointer<T>:: operator = (MySmartPointer& rhs)
+MySmartPointer<T>& MySmartPointer<T>:: operator = (MySmartPointer<T>& rhs)
 {
     if (this == &rhs) {
         return *this;
     }
     
-    std::cout << "*counterReference_=" << *counterReference_ << std::endl;
-
-    if (*counterReference_ > 0) {
-        std::cout << "start erase" << std::endl;
-        eraseThisReferense();
-        std::cout << "end erase" << std::endl;
-    }
- 
+    eraseThisReferense();
+   
     pointer_ = rhs.pointer_;
     counterReference_ = rhs.counterReference_;
 
@@ -104,13 +104,36 @@ MySmartPointer<T>& MySmartPointer<T>:: operator = (MySmartPointer& rhs)
 }
 
 template <class T>
-bool MySmartPointer<T>::operator == (const MySmartPointer& rhs) const 
+MySmartPointer<T>& MySmartPointer<T>:: operator = (T* rhs)
+{ 
+    eraseThisReferense();
+    
+    pointer_ = rhs;
+    counterReference_ = new int(1);
+    
+    rhs = nullptr;
+    return *this;
+}
+
+template <class T>
+MySmartPointer<T>& MySmartPointer<T>:: operator = (std::nullptr_t )
+{
+    eraseThisReferense();
+    
+    pointer_ = nullptr;
+    counterReference_ = new int(1);
+
+    return *this;
+}
+
+template <class T>
+bool MySmartPointer<T>::operator == (const MySmartPointer<T>& rhs) const
 {
     return pointer_ == rhs.pointer_;
 }
 
 template <class T>
-bool MySmartPointer<T>::operator != (const MySmartPointer& rhs) const
+bool MySmartPointer<T>::operator != (const MySmartPointer<T>& rhs) const
 {
     return pointer_ != rhs.pointer_;
 }

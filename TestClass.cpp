@@ -5,13 +5,20 @@ int TestClass::counter_object = 0;
 TestClass::TestClass(int rhs): number_(rhs)
 {
     counter_object++;
-    std::cout << "create. number of objects = " << counter_object << std::endl;
+    print( "create. count objects = " + std::to_string( counter_object));
+}
+
+TestClass::TestClass(const TestClass& rhs) 
+{
+    number_ = rhs.number_;
+    counter_object++;
+    print("create(copy). count objects = " + std::to_string(counter_object));
 }
 
 TestClass::~TestClass()
 {
     counter_object--;
-    std::cout << "delete. number of objects = " << counter_object << std::endl;
+    print("delete. count objects = " + std::to_string(counter_object));
 }
 
 int TestClass::get() const
@@ -22,4 +29,13 @@ int TestClass::get() const
 void TestClass::set(int rhs)
 {
     number_ = rhs;
+}
+
+bool TestClass::operator == (const TestClass& rhs) const
+{
+    return number_ == rhs.number_;
+}
+bool TestClass::operator != (const TestClass & rhs) const
+{
+    return number_ != rhs.number_;
 }

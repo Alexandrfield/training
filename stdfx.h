@@ -3,5 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <ctime>
 
 #endif  // STDFX_H_ 
