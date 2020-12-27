@@ -2,6 +2,7 @@
 #include "MySmartPointer.h"
 #include "TestClass.h"
 #include "MyList.h"
+#include "OutputOfRangeForList.h"
 
 bool testFunctionArgCopyConstructor(const MySmartPointer<TestClass> ptr, int correct_numb,std::string& message)
 {
@@ -135,7 +136,7 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
 
 
 
- bool testMyListPushBack(MyList<TestClass>& testList, std::vector<TestClass>& vect,std::string rezalt)
+ bool testMyListPushBack(MyList<TestClass>& testList, std::vector<TestClass>& vect,std::string &rezalt)
  {
      std::cout << "start push back " << vect.size() << std::endl;
      for (size_t i = 0; i < vect.size(); i++) {
@@ -148,6 +149,9 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
          if (testList.at(static_cast<int>(i)) != vect[i]) {
              print("pushBack problem i=" + std::to_string(i));
              flagCorrect1 = false;
+         }
+         else {
+             std::cout << "test => " << testList.at(i).get() << " " << vect[i].get() << std::endl;
          }
      }
      if (flagCorrect1 == false) {
@@ -172,7 +176,7 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
      return flagCorrect2 && flagCorrect1;
  }
 
- bool testMyListPushFront(MyList< TestClass>& testList, std::vector< TestClass>& vect, std::string rezalt)
+ bool testMyListPushFront(MyList< TestClass>& testList, std::vector< TestClass>& vect, std::string &rezalt)
  {
      for (int i = static_cast<int>(vect.size() - 1); i >= 0; i--) {
          testList.pushFront(vect[i]);
@@ -182,6 +186,9 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
          if (testList.at(i) != vect[i]) {
              print(" emplaceBack problem i=" + std::to_string(i));
              flagCorrect1 = false;
+         }
+         else {
+             std::cout << "test => " << testList.at(i).get() << " " << vect[i].get() << std::endl;
          }
      }
      if (flagCorrect1 == false) {
@@ -208,6 +215,10 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
 
  bool testMyListInsert(MyList< TestClass>& testList, std::vector< TestClass>& vect, std::string rezalt)
  {
+     for (size_t i = 0; i < vect.size(); i++) {
+         testList.pushBack(vect[i]);
+     }
+
      int test_insert = rand() % vect.size();
      vect.insert(vect.begin() + test_insert, TestClass(rand() % 100));
      testList.insert(vect[test_insert], test_insert);
@@ -216,6 +227,8 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
          if (testList.at(i) != vect[i]) {
              print(" insert problem i=" + std::to_string(i));
              flagCorrect = false;
+         } else {
+             std::cout <<"test => "<< testList.at(i).get() << " " << vect[i].get() << std::endl;
          }
      }
      if (flagCorrect == false) {
@@ -228,11 +241,10 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
      return flagCorrect;
  }
 
- std::string CheckingCorrect::checkList(int size)
+bool CheckingCorrect::checkList(int size,std::string& testRezalt)
  {
+    
      srand(static_cast<unsigned int>(time(0)));
-     
-     std::string testRezalt;
 
      std::vector<TestClass> vect;
      for(int i = 0; i < size; i++) {
@@ -240,12 +252,17 @@ bool testFunctionArgObjectReference(const TestClass& ptr, int correct_numb, std:
      }
 
      MyList< TestClass> testList;
+     bool fTestPushBack = false;
+     bool fTestPushFront = false;
+     bool fTestListInsert = false;
+     try {
+         testMyListPushBack(testList, vect, testRezalt);
+         testMyListPushFront(testList, vect, testRezalt);
+         testMyListInsert(testList, vect, testRezalt);
+     }
+     catch (OutputOfRangeForList& except) {
+         std::cout << except.what() << std::endl;
+     }
 
-     testMyListPushBack(testList, vect, testRezalt);
-     std::cout << std::endl;
-     testMyListPushFront(testList, vect, testRezalt);
-     std::cout << std::endl;
-     testMyListInsert(testList, vect, testRezalt);
-
-     return testRezalt;
+     return (fTestPushBack && fTestPushFront && fTestListInsert);
  }

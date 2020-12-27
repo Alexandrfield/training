@@ -10,9 +10,8 @@ class NodeList
     MySmartPointer<NodeList<T>> previous_;
     MySmartPointer<T> content_;
 
-    NodeList();
 public:
-
+    NodeList();
     NodeList( MySmartPointer<T>& content, MySmartPointer<NodeList<T>> previous, MySmartPointer<NodeList<T>> next);
     NodeList(NodeList<T>& rhs);
     MySmartPointer<NodeList<T>>& getNext();
@@ -23,10 +22,15 @@ public:
     void setNextNULL();
     void setPreviousNULL();
 
+    void delNode();
+
     T& at();
 
     NodeList<T>& operator = (NodeList<T>& rhs);
 };
+
+template <class T>
+NodeList<T>::NodeList() : content_(), previous_(), next_() {}
 
 template <class T>
 NodeList<T>::NodeList( MySmartPointer<T>& content, MySmartPointer<NodeList<T>> previous, MySmartPointer<NodeList<T>> next) :
@@ -94,6 +98,14 @@ template <class T>
 void NodeList<T>::setPreviousNULL()
 {
     previous_= nullptr;
+}
+
+template <class T>
+void NodeList<T>::delNode()
+{
+    setNextNULL();
+    setPreviousNULL();
+    content_ = nullptr;
 }
 
 #endif  // NODELIST_H_ 

@@ -16,6 +16,7 @@ class MyList
 public:
     MyList();
    // MyList(const MyList& rhs);
+    ~MyList();
 
     void pushBack(const T&  rhs);
     void pushFront(const T& rhs);
@@ -39,6 +40,21 @@ int MyList<T>::getSize()
 template <class T>
 MyList<T>::MyList() :head_(nullptr), end_(nullptr)
 {
+    sizeList_ = 0;
+}
+
+template <class T>
+MyList<T>::~MyList()
+{
+    MySmartPointer < NodeList<T>> tempPointer = head_;
+    MySmartPointer < NodeList<T>> tempPointer_next;
+    for (int i = 0; i < sizeList_; i++) {
+        tempPointer_next = tempPointer->getNext();
+        tempPointer->delNode();
+        tempPointer = tempPointer_next;
+    }
+    head_ = nullptr;
+    end_ = nullptr;
     sizeList_ = 0;
 }
 
@@ -114,6 +130,16 @@ void MyList<T>::erase(int index)
         throw OutputOfRangeForList();
     }
 
+
+    if (index == 0) {
+        emplaceFront();
+        return;
+    }
+    if (index == (sizeList_ -1)) {
+        emplaceBack();
+        return;
+    }
+
     MySmartPointer < NodeList<T>> tempPointer = head_;
     if (head_) {
         for (int i = 0; i < index; i++) {
@@ -123,9 +149,10 @@ void MyList<T>::erase(int index)
         MySmartPointer<NodeList<T>> next = tempPointer->getNext();
         MySmartPointer<NodeList<T>> previous = tempPointer->getPrevious();
 
+       // next, previous  != nullptr  т.к. крайние случаи уже обработаны
         next->setPrevious(previous);
         previous->setNext(next);
-
+        
         sizeList_--;
     }
 }
@@ -133,8 +160,19 @@ void MyList<T>::erase(int index)
 template <class T>
 void MyList<T>::insert(const T& rhs, int index)
 {
-    if (index < 0 || index > sizeList_) {
-        throw OutputOfRangeForList();
+
+    if (index < 0 || index >= sizeList_) {
+         throw OutputOfRangeForList();
+    }
+
+
+    if (index == 0) {
+        pushFront(rhs);
+        return;
+    }
+    if (index == (sizeList_-1)) {
+        pushBack(rhs);
+        return;
     }
 
     MySmartPointer < NodeList<T>> tempPointer = head_;
@@ -144,7 +182,7 @@ void MyList<T>::insert(const T& rhs, int index)
     MySmartPointer<NodeList<T>> previous = tempPointer->getPrevious();
 
     MySmartPointer<T> pointer(new T(rhs));
-    MySmartPointer<NodeList<T>> ptr = MySmartPointer<NodeList<T>>(new NodeList<T>(pointer, previous, tempPointer));
+    MySmartPointer<NodeList<T>> ptr(new NodeList<T>(pointer, previous, tempPointer));
     tempPointer->setPrevious(ptr);
     previous->setNext(ptr);
     sizeList_++;
