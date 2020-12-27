@@ -12,17 +12,18 @@
 #include "RightAngledTriangleBuilder.h"
 #include "ArbitraryTriangleBuilder.h"
 #include "enums.h"
+#include "globalParametrs.h"
 
 class TriangleBuilder
 {
-    std::shared_ptr<AbstractTriangleBuilder> head;
+    typePointer<AbstractTriangleBuilder> head_;
 
 public:
 
     TriangleBuilder();
 
-    std::unique_ptr<AbstractTriangle> buildTriangle(const std::shared_ptr <Point2D>& vertexA,
-        const  std::shared_ptr <Point2D>& vertexB, const  std::shared_ptr <Point2D>& vertexC);
+    typePointer<AbstractTriangle> buildTriangle(const typePointer<Point2D>& vertexA,
+        const  typePointer<Point2D>& vertexB, const  typePointer<Point2D>& vertexC);
 };
 
 #endif  // BILDER_TRIANGLE_H_ 

@@ -1,8 +1,8 @@
 #include "EquilateralTriangle.h"
 
-EquilateralTriangle::EquilateralTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle)
+EquilateralTriangle::EquilateralTriangle(const typePointer<TriangleParameters>& triangle): AbstractTriangle(triangle)
 {
-    std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
+    typePointer<std::vector<double>> triangleSides = triangle->GetSides();
 
     if( (!isEqual((*triangleSides)[0], (*triangleSides)[1])) || (!isEqual((*triangleSides)[0], (*triangleSides)[2])) ){
 

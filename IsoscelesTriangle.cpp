@@ -1,8 +1,8 @@
  #include "IsoscelesTriangle.h"
 
- IsoscelesTriangle::IsoscelesTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle)
+ IsoscelesTriangle::IsoscelesTriangle(const typePointer<TriangleParameters>& triangle): AbstractTriangle(triangle)
  {
-     std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
+     typePointer<std::vector<double>> triangleSides = triangle->GetSides();
 
      // test Isosceles:
      if (!isEqual((*triangleSides)[0], (*triangleSides)[1]) &&

@@ -1,8 +1,8 @@
 #include "RightAngledTriangle.h"
 
-RightAngledTriangle::RightAngledTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle)
+RightAngledTriangle::RightAngledTriangle(const typePointer<TriangleParameters>& triangle): AbstractTriangle(triangle)
 {
-    std::unique_ptr<std::vector<double>> triangleSides = triangle->GetSides();
+    typePointer<std::vector<double>> triangleSides = triangle->GetSides();
 
     // test ightAngledTriangle:
     std::sort((*triangleSides).begin(), (*triangleSides).end());

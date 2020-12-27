@@ -7,6 +7,7 @@ void print(const std::string& str)
 int getInput()
 {
     int a;
-    std::cin >> a;
-    return a;
+    //std::cin >> a;
+   // return a;
+    return (int)(rand() % 1000);
 }

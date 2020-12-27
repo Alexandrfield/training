@@ -5,8 +5,11 @@
 #include "TriangleBuilder.h"
 #include "common_function.h"
 #include "VocabularyTriangleType.h"
+#include "globalParametrs.h"
 
 int main(){
+
+    srand(static_cast<unsigned int>(time(0)));
 
     int counter_experiment = 0;
 
@@ -14,37 +17,39 @@ int main(){
     int vertexBX = 0, vertexBY = 0;
     int vertexCX = 0, vertexCY = 0;
 
-    print(" enter count experiment" );
+ //   print(" enter count experiment" );
    
-    counter_experiment = getInput();
+    //counter_experiment = getInput();
+    counter_experiment = 100000;
 
     TriangleBuilder bilderObjectTriangle;
 
-
+    std::cout << "start" << std::endl;
+    auto start = std::chrono::system_clock::now();
     for(int index = 0; index < counter_experiment; index++){
 
-        print(" vertex A: ");
+    //    print(" vertex A: ");
         vertexAX = getInput();
         vertexAY = getInput();
-        std::shared_ptr<Point2D> vertexA;
-        vertexA = std::make_shared<Point2D>(vertexAX, vertexAY);
-        
+        typePointer<Point2D> vertexA(new Point2D(vertexAX, vertexAY));
+       // vertexA = std::make_shared<Point2D>(vertexAX, vertexAY);
 
-        print(" vertex B: " );
+
+     //   print(" vertex B: " );
         vertexBX = getInput();
         vertexBY = getInput();
-        std::shared_ptr<Point2D> vertexB;
-        vertexB = std::make_shared<Point2D>(vertexBX, vertexBY);
+        typePointer<Point2D> vertexB(new Point2D(vertexBX, vertexBY));;
+       // vertexB = std::make_shared<Point2D>(vertexBX, vertexBY);
 
         print(" vertex C: " );
         vertexCX = getInput();
         vertexCY = getInput();
-        std::shared_ptr<Point2D> vertexC;
-        vertexC = std::make_shared<Point2D>(vertexCX, vertexCY);
+        typePointer<Point2D> vertexC(new Point2D(vertexCX, vertexCY));;
+       // vertexC = std::make_shared<Point2D>(vertexCX, vertexCY);
 
        try{
 
-          std::unique_ptr<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.buildTriangle(vertexA, vertexB, vertexC);
+           typePointer<AbstractTriangle> pointerToTriagle = bilderObjectTriangle.buildTriangle(vertexA, vertexB, vertexC);
 
           if( pointerToTriagle ) {
 
@@ -61,7 +66,10 @@ int main(){
             print("EXEPTION: " + std::string(exept.what()));
         }
     }
+    auto end = std::chrono::system_clock::now();
 
+    std::chrono::duration<double> elapsed_seconds = end - start;
+    std::cout << "time : " << elapsed_seconds.count() << "\n";
     print("end");
     getchar();
 

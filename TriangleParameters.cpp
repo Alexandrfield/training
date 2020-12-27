@@ -1,7 +1,7 @@
 #include "TriangleParameters.h"
 
-TriangleParameters::TriangleParameters(const std::shared_ptr<Point2D>& vertexA, const std::shared_ptr<Point2D>& vertexB,
-    const std::shared_ptr<Point2D>& vertexC)
+TriangleParameters::TriangleParameters(const typePointer<Point2D>& vertexA, const typePointer<Point2D>& vertexB,
+    const typePointer<Point2D>& vertexC)
 {
     double lengthAB = vertexA->DistanceToPoint(*vertexB);
     double lengthBC = vertexB->DistanceToPoint(*vertexC);
@@ -15,9 +15,9 @@ TriangleParameters::TriangleParameters(const std::shared_ptr<Point2D>& vertexA, 
     }
 
     triangleABC.reserve(3);
-    triangleABC.push_back(std::make_unique<Point2D>(*vertexA));
-    triangleABC.push_back(std::make_unique<Point2D>(*vertexB));
-    triangleABC.push_back(std::make_unique<Point2D>(*vertexC));
+    triangleABC.push_back(typePointer<Point2D>(new Point2D (*vertexA)));
+    triangleABC.push_back(typePointer<Point2D>(new Point2D (*vertexB)));
+    triangleABC.push_back(typePointer<Point2D>(new Point2D (*vertexC)));
 
     triangleSide.reserve(3);
     triangleSide.push_back(lengthAB);
@@ -25,12 +25,12 @@ TriangleParameters::TriangleParameters(const std::shared_ptr<Point2D>& vertexA, 
     triangleSide.push_back(lengthAC);
 }
 
-std::unique_ptr<std::vector< double >> TriangleParameters::GetSides() const
+typePointer<std::vector< double >> TriangleParameters::GetSides() const
 {
-    return std::make_unique<std::vector< double >>(triangleSide);
+    return typePointer<std::vector< double >>(new std::vector< double >(triangleSide));
 }
 
-std::unique_ptr<std::vector< Point2D >> TriangleParameters::GetPoints() const
+typePointer<std::vector< Point2D >> TriangleParameters::GetPoints() const
 {
     std::vector< Point2D > lengthSides;
     lengthSides.reserve(3);
@@ -40,5 +40,5 @@ std::unique_ptr<std::vector< Point2D >> TriangleParameters::GetPoints() const
         lengthSides.push_back(*triangleABC[index]);
     }
 
-    return std::make_unique<std::vector< Point2D >>(lengthSides);
+    return typePointer<std::vector< Point2D >>(new std::vector< Point2D >(lengthSides));
 }
