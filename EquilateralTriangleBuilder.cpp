@@ -1,9 +1,9 @@
 #include "EquilateralTriangleBuilder.h"
 
-EquilateralTriangleBuilder::EquilateralTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder) :
+EquilateralTriangleBuilder::EquilateralTriangleBuilder(typePointer<AbstractTriangleBuilder> nextBuilder) :
     AbstractTriangleBuilder(nextBuilder) {}
 
-std::unique_ptr<AbstractTriangle> EquilateralTriangleBuilder::create(const std::shared_ptr<TriangleParameters>& triangle) {
+typePointer<AbstractTriangle> EquilateralTriangleBuilder::create(const typePointer<TriangleParameters>& triangle) {
 
-    return std::make_unique<EquilateralTriangle>(triangle);
+    return typePointer<AbstractTriangle>(new EquilateralTriangle(triangle));
 }

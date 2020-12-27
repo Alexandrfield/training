@@ -2,27 +2,26 @@
 
 TriangleBuilder::TriangleBuilder()
 {
-
-    head = std::make_shared<EquilateralTriangleBuilder>(
-        std::make_shared<IsoscelesAndRightAngledTriangleBuilder>(
-            std::make_shared<IsoscelesTriangleBuilder>(
-               std::make_shared<RightAngledTriangleBuilder>(
-                    std::make_shared<ArbitraryTriangleBuilder>(nullptr)))));
-
-         
+   // head = temp;
+        typePointer<AbstractTriangleBuilder> head(new EquilateralTriangleBuilder(
+            typePointer<AbstractTriangleBuilder>( new IsoscelesAndRightAngledTriangleBuilder(
+               typePointer<AbstractTriangleBuilder>(new IsoscelesTriangleBuilder(
+                    typePointer<AbstractTriangleBuilder>( new RightAngledTriangleBuilder(
+                        typePointer<AbstractTriangleBuilder>(new ArbitraryTriangleBuilder(nullptr))))))))));
+        head_ = head;
 }
 
-std::unique_ptr<AbstractTriangle> TriangleBuilder::buildTriangle(const std::shared_ptr <Point2D>& vertexA,
-    const  std::shared_ptr <Point2D>& vertexB, const  std::shared_ptr <Point2D>& vertexC)
+typePointer<AbstractTriangle> TriangleBuilder::buildTriangle(const typePointer <Point2D>& vertexA,
+    const  typePointer <Point2D>& vertexB, const  typePointer <Point2D>& vertexC)
 {
     try {
-        std::shared_ptr<TriangleParameters> triangle = std::make_shared<TriangleParameters>(vertexA, vertexB, vertexC);
+        typePointer<TriangleParameters> triangle = typePointer<TriangleParameters>(new TriangleParameters(vertexA, vertexB, vertexC));
   
-        return head->buildTriangle(triangle);
+        return head_->buildTriangle(triangle);
     }
     catch (const ParametersAreIncorrect& exception) {
 
-        return std::unique_ptr<AbstractTriangle>();
+        return typePointer<AbstractTriangle>();
     }
 }
 

@@ -6,12 +6,13 @@
 #include "AbstractTriangle.h"
 #include "ObjectIsCanNotCreated.h"
 #include "enums.h"
+#include "globalParametrs.h"
 
 class ArbitraryTriangle : public AbstractTriangle
 {
 public:
 
-    ArbitraryTriangle(const std::shared_ptr<TriangleParameters>& triangle);
+    ArbitraryTriangle(const typePointer<TriangleParameters>& triangle);
 
     TriangleType GetType();
 };

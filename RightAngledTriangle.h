@@ -7,12 +7,13 @@
 #include "ObjectIsCanNotCreated.h"
 #include "enums.h"
 #include "common_function.h"
+#include "globalParametrs.h"
 
 class RightAngledTriangle : public AbstractTriangle
 {
 public:
 
-    RightAngledTriangle(const std::shared_ptr<TriangleParameters>& triangle);
+    RightAngledTriangle(const typePointer<TriangleParameters>& triangle);
 
     virtual TriangleType GetType();
 };

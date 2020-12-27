@@ -7,15 +7,16 @@
 #include "AbstractTriangle.h"
 #include "EquilateralTriangle.h"
 #include "AbstractTriangleBuilder.h"
+#include "globalParametrs.h"
 
 class EquilateralTriangleBuilder : public AbstractTriangleBuilder
 {
 public:
 
-    EquilateralTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
+    EquilateralTriangleBuilder(typePointer<AbstractTriangleBuilder> nextBuilder);
 //    EquilateralTriangleBuilder();
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) override;
+    typePointer<AbstractTriangle> create(const typePointer<TriangleParameters>& triangle) override;
 };
 
 #endif  // BUILDER_EQUILATERA_TRIANGLE_H_ 

@@ -1,9 +1,9 @@
 #include "AbstractTriangleBuilder.h"
 
-AbstractTriangleBuilder::AbstractTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> builder) : next_builder_(builder) {}
+AbstractTriangleBuilder::AbstractTriangleBuilder(typePointer<AbstractTriangleBuilder> builder) : next_builder_(builder) {}
 
 
-std::unique_ptr<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const std::shared_ptr<TriangleParameters>& triangle)
+typePointer<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const typePointer<TriangleParameters>& triangle)
 {
     try {
         return create(triangle);
@@ -14,8 +14,8 @@ std::unique_ptr<AbstractTriangle> AbstractTriangleBuilder::buildTriangle(const s
             return this->next_builder_->buildTriangle(triangle);
         }
 
-        return std::unique_ptr<AbstractTriangle>();
+        return typePointer<AbstractTriangle>();
     }
 
-    return std::unique_ptr<AbstractTriangle>();
+    return typePointer<AbstractTriangle>();
 }

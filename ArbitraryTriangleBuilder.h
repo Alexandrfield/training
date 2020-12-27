@@ -7,15 +7,16 @@
 #include "AbstractTriangle.h"
 #include "ArbitraryTriangle.h"
 #include "AbstractTriangleBuilder.h"
+#include "globalParametrs.h"
 
 class ArbitraryTriangleBuilder : public AbstractTriangleBuilder
 { 
 public:
 
   //  ArbitraryTriangleBuilder();
-    ArbitraryTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
+    ArbitraryTriangleBuilder(typePointer<AbstractTriangleBuilder> nextBuilder);
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) override;
+    typePointer<AbstractTriangle> create(const typePointer<TriangleParameters>& triangle) override;
 };
 
 #endif  // BUILDER_ARBITRARY_TRIANGLE_H_ 

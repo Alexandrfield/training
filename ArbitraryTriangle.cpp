@@ -1,6 +1,6 @@
 #include "ArbitraryTriangle.h"
 
-ArbitraryTriangle::ArbitraryTriangle(const std::shared_ptr<TriangleParameters>& triangle): AbstractTriangle(triangle) {};
+ArbitraryTriangle::ArbitraryTriangle(const typePointer<TriangleParameters>& triangle): AbstractTriangle(triangle) {};
 
 TriangleType ArbitraryTriangle::GetType()
 {

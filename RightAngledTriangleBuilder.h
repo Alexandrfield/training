@@ -6,14 +6,15 @@
 #include "AbstractTriangle.h"
 #include "RightAngledTriangle.h"
 #include "AbstractTriangleBuilder.h"
+#include "globalParametrs.h"
 
 class RightAngledTriangleBuilder : public AbstractTriangleBuilder
 {
 public:
 
-    RightAngledTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
+    RightAngledTriangleBuilder(typePointer<AbstractTriangleBuilder> nextBuilder);
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) override;
+    typePointer<AbstractTriangle> create(const typePointer<TriangleParameters>& triangle) override;
 };
 
 #endif  // BUILDER_RIGHT_ANGLED_TRIANGLE_H_ 

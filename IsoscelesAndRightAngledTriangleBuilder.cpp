@@ -1,10 +1,10 @@
 #include "IsoscelesAndRightAngledTriangleBuilder.h"
 
-IsoscelesAndRightAngledTriangleBuilder::IsoscelesAndRightAngledTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder) :
+IsoscelesAndRightAngledTriangleBuilder::IsoscelesAndRightAngledTriangleBuilder(typePointer<AbstractTriangleBuilder> nextBuilder) :
     AbstractTriangleBuilder(nextBuilder) {}
 
 
-std::unique_ptr<AbstractTriangle> IsoscelesAndRightAngledTriangleBuilder::create(const std::shared_ptr<TriangleParameters>& triangle) {
+typePointer<AbstractTriangle> IsoscelesAndRightAngledTriangleBuilder::create(const typePointer <TriangleParameters>& triangle) {
 
-    return std::make_unique<IsoscelesAndRightAngledTriangle>(triangle);
+    return typePointer<AbstractTriangle>(new IsoscelesAndRightAngledTriangle(triangle));
 }

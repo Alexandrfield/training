@@ -12,7 +12,7 @@ class IsoscelesAndRightAngledTriangle : public AbstractTriangle
 {
 public:
 
-    IsoscelesAndRightAngledTriangle(const std::shared_ptr<TriangleParameters>& triangle);
+    IsoscelesAndRightAngledTriangle(const typePointer<TriangleParameters>& triangle);
 
     virtual TriangleType GetType();
 };

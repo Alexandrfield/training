@@ -7,14 +7,15 @@
 #include "AbstractTriangle.h"
 #include "IsoscelesTriangle.h"
 #include "AbstractTriangleBuilder.h"
+#include "globalParametrs.h"
 
 class IsoscelesTriangleBuilder : public AbstractTriangleBuilder
 {
 public:
 
-    IsoscelesTriangleBuilder(std::shared_ptr<AbstractTriangleBuilder> nextBuilder);
+    IsoscelesTriangleBuilder(typePointer<AbstractTriangleBuilder> nextBuilder);
 
-    std::unique_ptr<AbstractTriangle> create(const std::shared_ptr<TriangleParameters>& triangle) override;
+    typePointer<AbstractTriangle> create(const typePointer<TriangleParameters>& triangle) override;
 };
 
 #endif  // BUILDER_ISOSCELES_TRIANGLE_H_ 
