@@ -9,6 +9,8 @@
 #include "ObjectIsCanNotCreated.h"
 #include "globalParametrs.h"
 
+//class AbstactTriangleRealization;
+
 class AbstractTriangleBuilder
 {
     typePointer<AbstractTriangleBuilder> next_builder_;

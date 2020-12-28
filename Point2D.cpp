@@ -1,36 +1,28 @@
 #include "Point2D.h"
+#include "Pointer2DRealization.h"
 
+Point2D::Point2D(double x, double y)
+{
+    pointer_ = new Pointer2DRealization(x, y);
+};
 
-Point2D::Point2D(double x, double y): xCoordinate_(x),yCoordinate_(y){ };
-
-Point2D::Point2D(const Point2D& rhs): xCoordinate_(rhs.xCoordinate_),yCoordinate_ (rhs.yCoordinate_) { };
+Point2D::Point2D(const Point2D& rhs)
+{
+    pointer_ = new Pointer2DRealization(rhs);
+};
 
 double Point2D::GetX() const
 {
-    return xCoordinate_;
+    return pointer_->GetX();
 }
 
 double Point2D::GetY() const
 {
-    return yCoordinate_;
+    return pointer_->GetY();
 }
 
-//double Point2D::SquareOfDistanceToPoint(const std::unique_ptr <Point2D>& point) const
-double Point2D::SquareOfDistanceToPoint(const Point2D& point) const
-{
-    double lengthX = xCoordinate_ - point.GetX();
-    double lengthY = yCoordinate_ - point.GetY();
-
-    double squareLength = (lengthX * lengthX) + (lengthY * lengthY);
-
-    return squareLength;
-}
-
-//double Point2D::DistanceToPoint(const std::unique_ptr <Point2D>& point) const
 double Point2D::DistanceToPoint(const Point2D& point) const
 {
-    double squareLength = SquareOfDistanceToPoint(point);
-
-    return std::sqrt(squareLength);
+    return pointer_->DistanceToPoint(point);
 }
 

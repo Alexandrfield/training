@@ -16,6 +16,6 @@ public:
 
     TriangleType GetType();
 };
- 
+
 
 #endif  // ARBITRARY_TRIANGLE_H_ 

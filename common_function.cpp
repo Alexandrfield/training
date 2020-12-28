@@ -8,6 +8,6 @@ int getInput()
 {
     int a;
     //std::cin >> a;
-   // return a;
+    //return a;
     return (int)(rand() % 1000);
 }

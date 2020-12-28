@@ -7,9 +7,11 @@
 #include "TriangleParameters.h"
 #include "globalParametrs.h"
 
+class AbstactTriangleRealization;
+
 class AbstractTriangle
 {
-    typePointer<TriangleParameters> triangle_;
+    typePointer<AbstactTriangleRealization> pounterRealization;
 
 public:
 

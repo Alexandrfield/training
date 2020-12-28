@@ -3,8 +3,8 @@
 
 #include "MySmartPointer.h"
 
-//#define typePointer MySmartPointer
-#define typePointer std::shared_ptr
+#define typePointer MySmartPointer
+//#define typePointer std::shared_ptr
 
 constexpr double cEpsilon = 0.0000001;
 

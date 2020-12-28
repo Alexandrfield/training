@@ -41,7 +41,7 @@ int main(){
         typePointer<Point2D> vertexB(new Point2D(vertexBX, vertexBY));;
        // vertexB = std::make_shared<Point2D>(vertexBX, vertexBY);
 
-        print(" vertex C: " );
+       // print(" vertex C: " );
         vertexCX = getInput();
         vertexCY = getInput();
         typePointer<Point2D> vertexC(new Point2D(vertexCX, vertexCY));;
